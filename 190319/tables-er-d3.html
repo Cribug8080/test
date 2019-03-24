@@ -188,7 +188,9 @@
       addFooter()
     }
     function delTables(){
+      allTables = g.selectAll('.tbClass').data(tables)
       allTables.exit().remove()
+      delLinks()
     }
     function initDrag(){
       allTables.call(d3.drag()//添加拖动事件
@@ -269,6 +271,9 @@
         .data(links)
     }
     function delLinks(){
+      allLinks =  d3.select('.links')
+        .selectAll('polyline')
+        .data(links)
       allLinks.exit().remove()
     }
     //添加边框
@@ -475,36 +480,45 @@
       addExtColsGs,
       updateFoot,
       delColsGs,
+      delTables,
     }
   }
 
   function addNode(data){
     let temp = tables.length
     let random = Math.floor(Math.random()*6)+1
-    tables.push({
-      tableName:'sda_fdsf'+temp,
-      id:'table'+temp,
-      cols:new Array(random).fill(1).map((v2,i2)=>{
-        return {
-          id:'table'+temp+'cols'+i2,
-          itemName:'table'+temp+'colsName'+i2,
-        }
-      }),
-    })
-    links.push({
-      source:data.id,
-      target:'table'+temp,
-      relation:'line1',
-      sourceIndex:1,
-      targetIndex:Math.floor(Math.random()*random)+1,
-      value:1,
-    })
-    // initObj.updata(links);
-    initObj.svgAddNode()
-    // forceSimulation.alphaTarget(0.8).restart()
-    // window.setTimeout(()=>{
-    //   forceSimulation.alphaTarget(0);
-    // },100)
+    if(data.isOpen){
+      data.isOpen = false
+      tables = tables.filter(v=>v.id != data.id)
+      console.table(tables)
+      links = links.filter(v=>v.source.id != data.id && v.target.id != data.id)
+      // initObj.delTables()
+      initObj.svgAddNode()
+    }else{
+      tables.push({
+        tableName:'sda_fdsf'+temp,
+        id:'table'+temp,
+        cols:new Array(random).fill(1).map((v2,i2)=>{
+          return {
+            id:'table'+temp+'cols'+i2,
+            itemName:'table'+temp+'colsName'+i2,
+          }
+        }),
+      })
+      links.push({
+        source:data.id,
+        target:'table'+temp,
+        relation:'line1',
+        sourceIndex:1,
+        targetIndex:Math.floor(Math.random()*random)+1,
+        value:1,
+      })
+      data.isOpen = true
+      initObj.svgAddNode()
+    }
+    console.log(tables)
+    console.log(links)
+    
   }
 
   function addCols(data){
