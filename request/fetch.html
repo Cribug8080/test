@@ -17,7 +17,7 @@
                 'Content-Type': 'text/plain',
                 'Cache-Control': 'max-age=10',
             });
-            fetch('http://127.0.0.1:8011/test/getTestData',{
+            fetch('http://10.10.113.186:30333/meta/system/getFriendsLink?systemName=dsd',{
                 credentials: 'include',
                 // headers: myHeaders,
                 mode:"cors",
@@ -31,7 +31,7 @@
 
         function xmlHR(){
             var xhr = new XMLHttpRequest()
-            xhr.open('GET','http://127.0.0.1:8011/test/getTestData')
+            xhr.open('GET','http://10.10.113.186:30333/meta/system/getFriendsLink?systemName=dsd')
             xhr.send();
 
             xhr.onreadystatechange = function () {
