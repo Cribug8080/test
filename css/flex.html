@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+    <title>Title</title>
+    <style>
+        form {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .input1 {
+            flex-grow: 1; /*flex-grow属性默认等于0，即使用本来的宽度，不拉伸。等于1时，就表示该项目宽度拉伸，占据当前行的所有剩余宽度。*/
+            /*align-self: stretch;*/
+        }
+        .input2 {
+            flex-grow: 1; /*flex-grow属性默认等于0，即使用本来的宽度，不拉伸。等于1时，就表示该项目宽度拉伸，占据当前行的所有剩余宽度。*/
+            /*align-self: stretch;*/
+        }
+
+        svg {
+            display: block;
+            width: 3em;
+        }
+    </style>
+</head>
+<body>
+<form action="#">
+    <input class="input1" type="email" placeholder="Enter your email">
+    <input class="input2" type="email" placeholder="Enter your email">
+    <button type="button" style="width:200px;">
+        <svg viewBox="0 0 20 20">
+            <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM6.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm2.16 3a6 6 0 0 1-11.32 0h11.32z"/>
+        </svg>
+    </button>
+</form>
+</body>
+</html>

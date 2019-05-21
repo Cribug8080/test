@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lazy lodaing img</title>
+</head>
+<body style="text-align:center">
+    <div id="images" style="width:500px;margin: auto;"></div>
+    <script>
+        let images = document.getElementById('images')
+
+        for (let index = 1; index < 100; index++) {
+            let img = document.createElement('img')
+            img.style.width='200px';
+            img.style.height='200px';
+            img.setAttribute("index",index)
+            // img.src=`./../static/images/target/${index}.jpg`
+            img.src=``
+            images.appendChild(img)
+        }
+
+        window.onscroll = function(){
+            let list = images.childNodes
+            for (let index = 0; index < list.length; index++) {
+                const element = list[index];
+                isVisible(element)
+            }
+        }
+
+        function isVisible(node){
+            var bound = node.getBoundingClientRect()
+            var clientHeight = window.innerHeight
+            if(bound.top < clientHeight){
+                node.src=`./../static/images/target/${node.getAttribute('index')}.jpg`
+            }
+        }
+    </script>
+</body>
+</html>

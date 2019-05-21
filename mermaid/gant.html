@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="mermaid">
+        gantt
+            title A Gantt Diagram
+            dateFormat  YYYY-MM-DD
+            section Section
+            A task           :a1, 2014-01-01, 1w
+            Another task     :after a1  , 20d
+            section Another
+            Task in sec      :2014-01-12  , 8d
+            another task      : 24d
+    </div>
+</body>
+</html>
