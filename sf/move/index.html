@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .common{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .son{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+    </style>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div class="bg" id="img">
+            <!-- 可拖到物体 -->
+            <div
+                class="common"
+                @touchstart.capture.stop="down"
+                @touchmove.capture.stop="move($event)"
+                @touchend.capture.stop="end">
+                <div class="son"></div>
+            </div>
+            <!-- 背景图 -->
+            <img src="./1.png" width="100%">
+        </div>
+    </div>>
+
+    <script>
+        new Vue({
+            el:"#main",
+            data(){
+                return {
+                    //拖动
+                    flags: false,
+                    nx: '',
+                    ny: '',
+                    dx: '',
+                    dy: '',
+                    xPum: '',
+                    yPum: '',
+                    position: {
+                        x: 0,
+                        y: 0 ,
+                    },
+                }
+            },
+            methods:{
+                //手指按下
+                down:function(e){
+                    console.log(e)
+                    let moveDiv = e.target;
+                    this.flags = true;
+                    this.position.x = e.touches[0].clientX;
+                    this.position.y = e.touches[0].clientY;
+                    this.dx = moveDiv.offsetLeft; //0，相当于css的left
+                    this.dy = moveDiv.offsetTop; //0，相对于css的top
+                },
+                //拖动
+                move:function(e){
+                    console.log(e)
+
+                    let odiv = e.target;
+                    let oArea = document.getElementById('img');  //父级DOM，用来限定拖动区域
+                    this.nx = e.touches[0].clientX - this.position.x;
+                    this.ny = e.touches[0].clientY - this.position.y;
+                    this.xPum = this.dx + this.nx;
+                    this.yPum = this.dy + this.ny;
+
+                    //限制拖动区域
+                    let maxRight = oArea.clientWidth - odiv.clientWidth;  //父级宽度 - 本身宽度
+                    let maxTop = oArea.clientHeight - odiv.clientHeight;  //父级高度 - 本身高度
+                    let resultX =0;
+                    let resultY = 0;
+
+                    //如果left为0
+                    if(this.xPum <= 0){
+                        this.xPum = 0;
+                    }
+                    //如果right为0
+                    if(this.xPum > maxRight){
+                        this.xPum = maxRight;
+                    }
+                    //如果top为0
+                    if(this.yPum < 0){
+                        this.yPum = 0;
+                    }
+                    //如果bottom为0
+                    if(this.yPum >= maxTop){
+                        this.yPum = maxTop;
+                    }
+                    //移动
+                    odiv.style.left = this.xPum + "px";
+                    odiv.style.top = this.yPum + "px";
+                },
+                //手指松开
+                end:function(){
+                    this.flags = false;
+                },
+
+            },
+        })
+    </script>
+</body>
+</html>
