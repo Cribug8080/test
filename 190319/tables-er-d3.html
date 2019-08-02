@@ -487,14 +487,14 @@
   function addNode(data){
     let temp = tables.length
     let random = Math.floor(Math.random()*6)+1
-    // if(data.isOpen){ //节点是否是打开状态，目前功能未完成
-    //   data.isOpen = false
-    //   tables = tables.filter(v=>v.id != data.id)
-    //   console.table(tables)
-    //   links = links.filter(v=>v.source.id != data.id && v.target.id != data.id)
-    //   // initObj.delTables()
-    //   initObj.svgAddNode()
-    // }else{
+    if(data.isOpen){ //节点是否是打开状态，目前功能未完成
+      data.isOpen = false
+      // tables = tables.filter(v=>v.id != data.id)
+      console.table(tables)
+      // links = links.filter(v=>v.source.id != data.id && v.target.id != data.id)
+      // initObj.delTables()
+      initObj.svgAddNode()
+    }else{
       tables.push({
         tableName:'sda_fdsf'+temp,
         id:'table'+temp,
@@ -513,9 +513,9 @@
         targetIndex:Math.floor(Math.random()*random)+1,
         value:1,
       })
-      // data.isOpen = true
+      data.isOpen = true
       initObj.svgAddNode()
-    // }
+    }
     console.log(tables)
     console.log(links)
     
