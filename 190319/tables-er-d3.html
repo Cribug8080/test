@@ -188,9 +188,9 @@
       addFooter()
     }
     function delTables(){
-      allTables = g.selectAll('.tbClass').data(tables)
+      // allTables = g.selectAll('.tbClass').data(tables)
       allTables.exit().remove()
-      delLinks()
+      // delLinks()
     }
     function initDrag(){
       allTables.call(d3.drag()//添加拖动事件
@@ -271,9 +271,9 @@
         .data(links)
     }
     function delLinks(){
-      allLinks =  d3.select('.links')
-        .selectAll('polyline')
-        .data(links)
+      // allLinks =  d3.select('.links')
+      //   .selectAll('polyline')
+      //   .data(links)
       allLinks.exit().remove()
     }
     //添加边框
@@ -296,7 +296,7 @@
         .attr('class','table-title')
 
       tTitle.append('rect')
-        .attr('rx',5)
+        // .attr('rx',5)
         .attr('height',function(d){
           return tableTitleHeight
         })
@@ -313,7 +313,7 @@
         .attr('dx',function(){
           return colsWidth/2
         })
-        .attr('dy',tableTitleHeight/2)
+        // .attr('dy',tableTitleHeight/2)
         .attr('class','svg-text')
         .attr('text-anchor','middle')
         .attr('dominant-baseline','middle')
@@ -487,14 +487,14 @@
   function addNode(data){
     let temp = tables.length
     let random = Math.floor(Math.random()*6)+1
-    if(data.isOpen){
-      data.isOpen = false
-      tables = tables.filter(v=>v.id != data.id)
-      console.table(tables)
-      links = links.filter(v=>v.source.id != data.id && v.target.id != data.id)
-      // initObj.delTables()
-      initObj.svgAddNode()
-    }else{
+    // if(data.isOpen){ //节点是否是打开状态，目前功能未完成
+    //   data.isOpen = false
+    //   tables = tables.filter(v=>v.id != data.id)
+    //   console.table(tables)
+    //   links = links.filter(v=>v.source.id != data.id && v.target.id != data.id)
+    //   // initObj.delTables()
+    //   initObj.svgAddNode()
+    // }else{
       tables.push({
         tableName:'sda_fdsf'+temp,
         id:'table'+temp,
@@ -513,9 +513,9 @@
         targetIndex:Math.floor(Math.random()*random)+1,
         value:1,
       })
-      data.isOpen = true
+      // data.isOpen = true
       initObj.svgAddNode()
-    }
+    // }
     console.log(tables)
     console.log(links)
     
