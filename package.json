@@ -19,6 +19,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "log4js": "^4.1.0",
+    "mobx": "^5.10.1",
+    "path-to-regexp": "^3.0.0",
     "wl-tools": "^1.0.3"
   }
 }

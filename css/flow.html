@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .masonry { 
+                -moz-column-count:3; /* Firefox */
+                -webkit-column-count:3; /* Safari 和 Chrome */
+                column-count:3;
+                -moz-column-gap: 2em;
+                -webkit-column-gap: 2em;
+                column-gap: 2em;
+                width: 80%;
+                margin:2em auto;
+            }
+            .item { 
+                padding: 2em;
+                margin-bottom: 2em;
+                -moz-page-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
+                background: #f60;
+            }
+            @media screen and (max-width: 800px) { 
+                .masonry { 
+                    column-count: 2;
+                } 
+            } 
+            @media screen and (max-width: 500px) { 
+                .masonry { 
+                    column-count: 1; 
+                } 
+            }
+            .item_content {
+                height: 200px;
+            }
+            .content-lar {
+                height: 500px;
+            }
+    </style>
+</head>
+<body>
+    <div class="masonry"> 
+        <div class="item"> 
+            <div class="item_content content-lar"> 1
+            </div> 
+        </div> 
+        <div class="item"> 
+            <div class="item_content content-sma"> 2
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-mid"> 3
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-sma"> 4
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-mid"> 5
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-lar"> 6
+            </div> 
+        </div> 
+        <div class="item"> 
+            <div class="item_content content-sma"> 7
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-lar"> 8
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-lar"> 9
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-sma"> 10
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-mid"> 11
+            </div> 
+        </div>
+        <div class="item"> 
+            <div class="item_content content-mid"> 12
+            </div> 
+        </div>
+        <!-- more items --> 
+    </div>
+</body>
+</html>

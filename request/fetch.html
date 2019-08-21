@@ -13,14 +13,15 @@
     <script>
         function fetchFn(){
             let myHeaders = new Headers({
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'text/plain',
-                'Cache-Control': 'max-age=10',
+                token: "qwe123we",
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Content-Type': 'text/plain',
+                // 'Cache-Control': 'max-age=10',
             });
             fetch('http://10.10.113.186:30333/meta/system/getFriendsLink?systemName=dsd',{
-                credentials: 'include',
+                // credentials: 'include',
                 // headers: myHeaders,
-                mode:"cors",
+                // mode:"cors",
                 // mode:"no-cors",
             }).then(function(response){
                 return response.text()
