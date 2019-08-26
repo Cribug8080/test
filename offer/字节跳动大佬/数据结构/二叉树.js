@@ -93,7 +93,7 @@ function middleOrder (root) {
 // console.log(middleOrder(t1.root).join(' '))
 // console.log(t1.middleOrder(t1.root).join(' '));
 
-// 循环实现中序遍历
+// 循环实现前序遍历
 function preOrder (root) {
     let stack = [], res = [];
     let current = root;
@@ -167,3 +167,26 @@ function getLaterByPreAndMid (pre, mid) {
 // console.log(laterOrder(t1.root).join(' '))
 // console.log(getLaterByPreAndMid(preOrder(t1.root), middleOrder(t1.root)).join(' '))
 
+
+// 递归二叉树最大深度
+function deepMaxTree (node) {
+    return node ? (Math.max(deepMaxTree(node.left), deepMaxTree(node.right)) + 1) : 0;
+}
+// console.log(deepMaxTree(t1.root));
+
+// 递归二叉树最小深度
+// 最小深度是指根节点最近的叶子节点，叶子节点是没有左右子节点的节点。
+// 不能只是简单的将最大深度换成max，因为只有一个叶子节点的节点不是叶子节点
+function deepMinTree (node) {
+    if(!node.right && node.left) {
+        return deepMinTree(node.left) + 1
+    }
+    if(!node.left && node.right) {
+        return deepMinTree(node.right) + 1
+    }
+    if(!node.left && !node.right) {
+        return 1
+    }
+    return Math.min(deepMinTree(node.left), deepMinTree(node.right)) + 1;
+}
+// console.log(deepMinTree(t1.root));
