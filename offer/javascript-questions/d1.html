@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div onclick="console.log('div冒泡')">
+        <p onclick="console.log('p冒泡')">
+            js event 冒泡
+        </p>
+    </div>
+    <div id="div">
+        <p id="p">
+            js event 捕获
+        </p>
+    </div>
+    <script>
+        document.getElementById("div").addEventListener('click',function () {
+            console.log('div捕获')
+        }, true);
+        document.getElementById("p").addEventListener('click',function () {
+            console.log('p捕获')
+        }, true);
+    </script>
+</body>
+</html>
