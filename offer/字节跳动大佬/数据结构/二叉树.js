@@ -1,3 +1,4 @@
+//http://www.conardli.top/docs/
 
 class Node {
     constructor (data, left = null, right = null) {

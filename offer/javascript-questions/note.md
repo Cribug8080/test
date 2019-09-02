@@ -1,4 +1,4 @@
-
+(来源)[https://github.com/lydiahallie/javascript-questions]
 
 ## `static`
 静态方法不能被实例使用。
