@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Cribug8080/test#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "exceljs": "^2.0.1",
     "log4js": "^4.1.0",
     "mobx": "^5.10.1",
     "path-to-regexp": "^3.0.0",
