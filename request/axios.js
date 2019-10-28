@@ -1,6 +1,9 @@
 const axios = require('axios')
 
-axios.get('https://blog.csdn.net/Cribug8080').then(res=>{
+let params = new URLSearchParams();
+params.append('group', 'UNTREATED');
+params.append('robotId', 0);
+axios.get('http://localhost:8800/robot/questionList', params).then(res=>{
     console.log(res)
 })
 
