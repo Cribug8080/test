@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation 动画</title>
+    <style>
+        html,body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #test1 {
+            height: 100px;
+            width: 100px;
+            position: relative;
+            background-color: red;
+            animation: style1 3s cubic-bezier(0,0,1,1) infinite alternate;
+        }
+        @keyframes style1 {
+            0%{
+                left: 0;
+                background-color: red;
+            }
+            50% {
+                background-color: green;
+            }
+            100% {
+                left: 200px;
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function push(){
+            let test1 = document.getElementById("test1")
+            let state = test1.style.animationPlayState
+            test1.style.animationPlayState = state === "paused" ? "running" : "paused"
+        }
+    </script>
+    <div id="test1"></div>
+    <button onclick="push()">push</button>
+</body>
+</html>
