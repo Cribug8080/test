@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy Image</title>
+    <script>
+        function selectText(element) {
+            var doc = document,
+                text = doc.getElementById(element),
+                range,
+                selection;
+            
+            if (doc.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();        
+                range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                /*if(selection.setBaseAndExtent){
+                    selection.setBaseAndExtent(text, 0, text, 1);
+                }*/
+            }else{
+                alert("none");
+            }
+            }
+   </script>
+</head>
+<body>
+    <div id="app">
+            innerHtml: "已注册大眼象APP用户:可直接通过大眼象APP\"我的”入口登录即可
+            ;未注册大眼象APP用户，可浏览商城页面
+            ，如需下单或者加入购物车，需要按APP引导注册后进行下单购买。",
+    </div>
+    <button onclick="selectText('app')"></button>
+</body>
+</html>

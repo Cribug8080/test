@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        var E = window.wangEditor
+        var editor = new E('#div1')
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.create()
+    </script>
+</body>
+</html>

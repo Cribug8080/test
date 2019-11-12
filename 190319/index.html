@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>摄像头调用1</title>
+</head>
+
+<body>
+    <video id="v"></video>
+    <canvas id="canvas"></canvas>
+    <script>
+        !(function () {
+            function userMedia() {
+                return navigator.getUserMedia = navigator.getUserMedia ||
+                    navigator.webkitGetUserMedia ||
+                    navigator.mozGetUserMedia ||
+                    navigator.msGetUserMedia || null;
+            }
+            if (userMedia()) {
+                var constraints = {
+                    video: true,
+                    audio: false
+                };
+                var media = navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
+                    var v = document.getElementById('v');
+                    // var url = window.URL || window.webkitURL;
+                    // v.src = url ? url.createObjectURL(stream) : stream;
+                    // v.play();
+
+                    v.srcObject = mediaStream;
+                    v.onloadedmetadata = function(e) {
+                        v.play();
+                    };
+                }).catch(function (error) {
+                    console.log("ERROR");
+                    console.log(error);
+                });
+            } else {
+                console.log("不支持");
+            }
+        })();
+    </script>
+</body>
+</html>

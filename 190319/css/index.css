@@ -1,0 +1,33 @@
+html,body,.main,.bg-video {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border: 0;
+}
+body {
+    background-image: url(./static/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.header {
+    display: inline;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 1.12rem;
+    width: 100%;
+    text-align: center;
+    background-image: url(./static/title-bg.png);
+    background-size: 100% 100%;
+    color: white;
+    font-weight: bold;
+    font-size: .46rem;
+}
+
+.bg-video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <svg width="140" height="30"
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+        <a xlink:href="https://developer.mozilla.org/en-US/docs/SVG"
+            target="_blank">
+        <rect height="30" width="120" y="0" x="0" rx="15"/>
+        <text fill="white" text-anchor="middle" 
+                y="21" x="60">SVG on MDN</text>
+        </a>
+    
+    </svg>
+    <svg id="svg" width="1000" height="300"></svg>
+    <div id="div"></div>
+    <script>
+        var svg = d3.select('#svg')
+        var g = svg.append('g').attr('transform', 'translate(' + 100 + ',' + 100 + ')')
+        var inp = document.createElement('a');
+        inp.innerText = 'textDiv'
+        var XMLS = new XMLSerializer(); 
+        var inp_xmls = XMLS.serializeToString(inp); // First convert DOM node into a string
+
+        // Insert the newly created node into the document's body
+        // document.body.insertAdjacentHTML('afterbegin', inp_xmls);
+
+        console.log(inp_xmls)
+        g.append('div').append('text').text('链接')
+
+        // d3.select('#div').html(inp_xmls)
+    </script>
+</body>
+</html>
