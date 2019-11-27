@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Proxy Image</title>
-    <script>
-        function selectText(element) {
-            var doc = document,
-                text = doc.getElementById(element),
-                range,
-                selection;
-            
-            if (doc.body.createTextRange) {
-                range = document.body.createTextRange();
-                range.moveToElementText(text);
-                range.select();
-            } else if (window.getSelection) {
-                selection = window.getSelection();        
-                range = document.createRange();
-                range.selectNodeContents(text);
-                selection.removeAllRanges();
-                selection.addRange(range);
-                /*if(selection.setBaseAndExtent){
-                    selection.setBaseAndExtent(text, 0, text, 1);
-                }*/
-            }else{
-                alert("none");
-            }
-            }
-   </script>
-</head>
-<body>
-    <div id="app">
-            innerHtml: "已注册大眼象APP用户:可直接通过大眼象APP\"我的”入口登录即可
-            ;未注册大眼象APP用户，可浏览商城页面
-            ，如需下单或者加入购物车，需要按APP引导注册后进行下单购买。",
-    </div>
-    <button onclick="selectText('app')"></button>
-</body>
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <title>菜鸟教程(runoob.com)</title>
+   <script src="https://cdn.bootcss.com/socket.io-stream/0.9.1/socket.io-stream.js"></script>
+        
+   </head>
+   <body>
+   
+      <div id="sse">
+         <button onclick="connect()">测试</button>
+	  </div>
+	  <script type="text/javascript">
+        function connect() {
+			namespace = '/get_name';
+			var socket = io.connect(location.protocol
+				+ '//' + document.domain + ':'
+				+ 5000 + namespace);
+	
+			socket.on('server_response', function(res) {
+				//res表示接收的数据，这里做数据的处理
+				console.log(res)
+			});
+		}
+      </script>
+      
+   </body>
 </html>

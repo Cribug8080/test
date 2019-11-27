@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./test.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" height="500" width="500"></canvas>
+    <script>
+        console.log(data)
+        let dom = document.getElementById('canvas')
+        let ctx = dom.getContext('2d')
+        let width = data.app_data.P_1.crop_img[0].length
+        let height = data.app_data.P_1.crop_img.length
+        var imgData=ctx.createImageData(width, height);
+        data.app_data.P_1.crop_img.forEach((v1, i1) => {
+            v1.forEach((v2, i2) => {
+                imgData.data[i1*width*4+i2*4+0] = v2[2]
+                imgData.data[i1*width*4+i2*4+1] = v2[1]
+                imgData.data[i1*width*4+i2*4+2] = v2[0]
+                imgData.data[i1*width*4+i2*4+3] = 125
+            })
+        })
+        ctx.putImageData(imgData, 0, 0);
+    </script>
+</body>
+</html>

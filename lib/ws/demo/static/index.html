@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+</head>
+<body>
+<h1 id="t"></h1>
+<script type="text/javascript">
+    $(document).ready(function() {
+        namespace = '/test_conn';
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + 5000 +namespace);
+        socket.on('connect', function() {
+            console.log('connect to server');
+            socket.emit('client response', {data: 'client response msg'});
+            });
+
+            socket.on('server response', function(msg) {
+            console.log(msg.data);
+            });
+    });
+</script>
+</body>
+</html>

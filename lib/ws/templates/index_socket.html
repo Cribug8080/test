@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flask-SocketIO Test</title>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+
+            namespace = '/test_conn';
+            // var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port +namespace);
+            var socket = io.connect('http://172.16.33.138:5000' +namespace);
+
+            //进入主页后调用一次，后台每隔0.2秒发送一次识别结果，res_json = {'app_data': {'message': '识别成功', 'P_1': {'p1_id': '046115', 'c_name': '孙瑞娜', 'e_name': 'sunruina', 'is_birth': '0', 'crop_img': [[[8.0, 9.0, 11.0], [121.0, 134.0, 152.0]]]}}, 'app_status': '1'}
+            socket.on('connect', function() {socket.emit('get_name', {data: 'I\'m connected!'});});
+            socket.on('get_name_response', function(msg) {console.log(msg);});
+
+            // //进入录入页后调用一次，后台每隔0.2秒发送一次画面，res_json = {"app_data": {"message": "获取实时帧成功", "video_pic": [[[8.0, 9.0, 11.0], [121.0, 134.0, 152.0]]]}, "app_status": "1"}
+            // socket.on('connect', function() {socket.emit('get_video', {data: 'I\'m connected!'});});
+            // socket.on('get_video_response', function(msg) {console.log(msg);});
+
+            // //点击拍照后调一次，发送一次拍照结果，res_json = {"app_data": {"message": "图片有效", "video_pic": [[[8.0, 9.0, 11.0], [121.0, 134.0, 152.0]]]}, "app_status": "1"}
+            // socket.on('connect', function() {socket.emit('lock_video', {data: 'I\'m connected!'});});
+            // socket.on('lock_video_response', function(msg) {console.log(msg);});
+
+            // //点击确认录入后调一次，发送一次录入结果。
+            // socket.on('connect', function() {socket.emit('add_new', {data: 'I\'m connected!'});});
+            // socket.on('add_new_response', function(msg) {console.log(msg);});
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Flask-SocketIO Test</h1>
+    <p>Async mode is: <b>{{ async_mode }}</b></p>
+    <p>Average ping/pong latency: <b><span id="ping-pong"></span>ms</b></p>
+    <h2>Send:</h2>
+    <h2>Receive:</h2>
+    <div id="log"></div>
+</body>
+</html>
