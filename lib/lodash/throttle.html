@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+</head>
+<body>
+    <form>
+        <div>
+            <label>lodash debounceFn</label><input oninput="debounceFn()">
+        </div>
+        <div>
+            <label>lodash throttle</label><input oninput="throttleFn()">
+        </div>
+        <div>
+            <label>mine debounceFn</label><input oninput="debounceMine(this)">
+        </div>
+        <div>
+            <label>mine throttle</label><input oninput="throttleMine(this)">
+        </div>
+    </form>
+    <script>
+        var debounceFn = _.debounce(function() {
+            console.log('debounceFn')
+        }, 1000)
+        var throttleFn = _.throttle(function() {
+            console.log('throttle')
+        }, 1000, {
+            leading: false
+        })
+        
+        var debounceMine = debounce(function (val) {
+            console.log('debounceMine', val)
+        }, 500)
+        var throttleMine = throttle3(function (val) {
+            console.log('throttleMine', val)
+        }, 3000)
+
+        function debounce(fn, delay = 1000) {
+            var timer
+            return function () {
+                let args = arguments[0].value
+                let context = this
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    fn.call(context, args)
+                }, delay);
+            }
+        }
+
+        function throttle(fn, delay = 1000) {
+            let last = new Date()
+            return function () {
+                let context = this
+                let args  = arguments
+                if(new Date() - last >= delay) {
+                    fn.call(context, args[0].value)
+                    last = new Date()
+                }
+            }
+        }
+
+        function throttle2(fn, delay = 1000) {
+            let timer = null
+            return function () {
+                let context = this
+                let args  = arguments
+                if(timer === null) {
+                    timer = setTimeout(() => {
+                        fn.call(context, args[0].value)
+                        timer = null
+                    }, delay);
+                }
+            }
+        }
+
+        function throttle3(fn, delay = 1000) {
+            let timer = null, last = new Date()
+            return function () {
+                let context = this
+                let args  = arguments[0].value
+                if(timer === null) {
+                    timer = setTimeout(() => {
+                        fn.call(context, args)
+                        timer = null
+                    }, delay);
+                }
+                debounceMine(...arguments)
+            }
+        }
+    </script>
+</body>
+</html>

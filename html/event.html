@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .d1 {
+            width: 500px;
+            height: 500px;
+            padding: 50px;
+            background-color: #ccc;
+        }
+        .d2 {
+            width: 400px;
+            height: 400px;
+            padding: 50px;
+            background-color: #aaa;
+        }
+        .d3 {
+            width: 300px;
+            height: 300px;
+            padding: 50px;
+            background-color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1" id="id1" onclick="f1(this)">
+        <div class="d2" id="id2" onclick="f2(this)">
+            <div class="d3" id="id3" onclick="f3()"></div>
+        </div>
+    </div>
+    <script>
+        function f1() {
+            console.log('f1')
+        }
+        function f2(e) {
+            console.log('f2')
+            // window.event.stopPropagation()
+        }
+        function f3(e) {
+            console.log(e)
+            window.event.bubbles = false
+            console.log('f3')
+        }
+
+        let id1 = document.getElementById('id1')
+        id1.addEventListener('click', () => {console.log('c1')}, {
+            capture: true
+        })
+        id1.addEventListener('click', () => {console.log('c2')}, {
+            capture: true
+        })
+        id1.addEventListener('click', () => {console.log('c3')}, true)
+    </script>
+</body>
+</html>

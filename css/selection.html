@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1+p {
+            color: blue;
+        }
+        [data=test-color] {
+            color: red;
+        }
+        [data~=incloude] {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="div1">title</div>
+        <p>p1</p>
+        <p data="incloude test-color">p2</p>
+        <p>p3</p>
+    </div>
+    <div>
+        <div class="div1">title</div>
+        <p>p1</p>
+        <p data="test-color">p2</p>
+        <p>p3</p>
+    </div>
+</body>
+
+</html>

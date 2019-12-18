@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='target' class='block' name='target'>
+        target的第一个子节点
+        <p>
+            <span>target的后代</span>
+        </p>
+    </div>
+    <script>
+        var target=document.getElementById('target');
+        var i=0
+        var observe=new MutationObserver(function (mutations,observe) {
+            i++  
+            console.log('MutationObserver', i) 
+        });
+        observe.observe(target,{ childList: true});
+        target.appendChild(document.createTextNode('1'));
+        target.appendChild(document.createTextNode('2'));
+        target.appendChild(document.createTextNode('3'));
+        console.log(i)
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="changeHash('changeHash1')">changeHash1</button>
+  <button onclick="changeHash('changeHash2')">changeHash2</button>
+  <button onclick="history.back()">back</button>
+  <button onclick="history.forward()">forward</button>
+  <h1>我在监听地址变化: <span id="changeUrl"></span></h1>
+
+  <script>
+      window.onpopstate = function(args) {
+        document.getElementById('changeUrl').innerHTML = document.location.href
+      }
+  
+      function changeHash (url) {
+        location.hash = url
+      }
+    </script>
+</body>
+</html>

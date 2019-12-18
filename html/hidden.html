@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			overflow: auto;
+			/* display: none; */
+		}
+		.t1, .t2{
+			width: 100px;
+			height: 100px;
+		}
+		.t1 {
+			background-color: green;
+			position: absolute;
+			right: -50px;
+		}
+		.t2 {
+			background-color: yellow;
+			position: fixed;
+			top: -50px;
+		}
+		.t3 {
+			width: 0;
+			height: 0;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<ul style="list-style:decimal;">
+		<li>CSS display的值是none。</li>
+		<li>type="hidden"的表单元素。</li>
+		<li>宽度和高度都显式设置为0。</li>
+		<li>一个祖先元素是隐藏的，该元素是不会在页面上显示</li>
+		<li>CSS visibility的值是hidden</li>
+		<li>CSS opacity的指是0</li>
+		<li>CSS绝对定位移出窗口</li>
+	</ul>
+	<div class="t1">qweqwe</div>
+	<div class="t2">qweqwe</div>
+	<div class="t3">qweqwe</div>
+</body>
+</html>

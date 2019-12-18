@@ -7,12 +7,13 @@
 <script>
 export default {
     name: 'dataFn',
-    data: {
-        count: 0,
+    data() {
+        return {
+            count: 0,
+        }
     },
     methods: {
         add(){
-            console.log(this.count)
             this.count += 1;
         },
     }
