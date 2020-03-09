@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "task_name": "UE",
+      "task_status": "",
+      "tags": [],
+      "scheduled_start_time": 0,
+      "scheduled_end_time": 0,
+      "pre_nodes": [],
+      "can_delete": 1,
+      "task_confirm_permission": "admin",
+      "third_party_status": [
+        {
+          "url": ""
+        }
+      ],
+      "task_confirm_info": {
+        "confirm_form_type_id": 488,
+        "fields": []
+      },
+      "task_checklist": {}
+    }
+  ],
+  "edges": []
+}

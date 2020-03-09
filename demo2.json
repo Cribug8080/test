@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "id": 606,
+      "task_name": "r1",
+      "task_status": "TaskStatus_Pending",
+      "task_status_desc": "未开始",
+      "pre_nodes": [],
+      "tags": [],
+      "can_delete": 1,
+      "task_confirm_permission": "",
+      "task_confirm_info": {
+        "confirm_form_type_id": 0,
+        "fields": null
+      },
+      "task_confirm_detail": {
+        "field_values": null
+      },
+      "third_party_status": [
+        {
+          "platform_name": "",
+          "url": ""
+        }
+      ],
+      "task_checklist": {
+        "test_case_check_item": {
+          "check_type": "",
+          "check_type_name": "",
+          "enabled": 0
+        },
+        "bug_check_item": {
+          "check_type": "",
+          "check_type_name": "",
+          "bug_type": 0,
+          "enabled": 0
+        },
+        "customized_check_item_list": null
+      },
+      "task_events": {},
+      "owner": "王利",
+      "scheduled_start_time": 1581436800000,
+      "scheduled_end_time": 1582128000000,
+      "scheduled_work_time": 0,
+      "start_time": 0,
+      "end_time": 0,
+      "work_time": 0,
+      "sub_tasks": null
+    },
+    {
+      "id": 607,
+      "task_name": "r2",
+      "task_status": "TaskStatus_Pending",
+      "task_status_desc": "未开始",
+      "pre_nodes": [
+        "r1"
+      ],
+      "tags": [],
+      "can_delete": 1,
+      "task_confirm_permission": "",
+      "task_confirm_info": {
+        "confirm_form_type_id": 0,
+        "fields": null
+      },
+      "task_confirm_detail": {
+        "field_values": null
+      },
+      "third_party_status": [
+        {
+          "platform_name": "",
+          "url": ""
+        }
+      ],
+      "task_checklist": {
+        "test_case_check_item": {
+          "check_type": "",
+          "check_type_name": "",
+          "enabled": 0
+        },
+        "bug_check_item": {
+          "check_type": "",
+          "check_type_name": "",
+          "bug_type": 0,
+          "enabled": 0
+        },
+        "customized_check_item_list": null
+      },
+      "task_events": {},
+      "owner": "",
+      "scheduled_start_time": 0,
+      "scheduled_end_time": 0,
+      "scheduled_work_time": 0,
+      "start_time": 0,
+      "end_time": 0,
+      "work_time": 0,
+      "sub_tasks": null
+    }
+  ],
+  "edges": [
+    {
+      "from_node": "r1",
+      "to_node": "r2"
+    }
+  ]
+}
