@@ -9,11 +9,11 @@ function loadHTML(elementId, filePath) {
         .catch(error => console.error('Error loading HTML:', error));
 }
 
-function addCss() {
+(function addCss() {
     document.head.innerHTML += `
         <link rel="stylesheet" href="./index.css">
     `;
-}
+})()
 
 // 在页面加载完成后调用
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,5 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementsByClassName(location.pathname)?.[0]?.classList.add('selected')
     });
     loadHTML('footer', './components/footer.html');
-    addCss();
 });
