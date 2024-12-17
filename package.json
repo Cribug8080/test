@@ -29,6 +29,7 @@
     "nodejs-websocket": "^1.7.2",
     "path-to-regexp": "^3.0.0",
     "request": "^2.88.0",
-    "wl-tools": "^1.0.3"
+    "wl-tools": "^1.0.3",
+    "zx": "^8.2.4"
   }
 }
