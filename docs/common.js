@@ -11,14 +11,14 @@ function loadHTML(elementId, filePath) {
 
 (function addCss() {
     document.head.innerHTML += `
-        <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="/test/index.css">
     `;
 })()
 
 // 在页面加载完成后调用
 document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header', './components/header.html').then(() => {
+    loadHTML('header', '/test/components/header.html').then(() => {
         document.getElementsByClassName(location.pathname)?.[0]?.classList.add('selected')
     });
-    loadHTML('footer', './components/footer.html');
+    loadHTML('footer', '/test/components/footer.html');
 });
