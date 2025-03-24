@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Gradient Text</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // 设置字体
+    ctx.font = 'bold 60px Arial';
+
+    // 线性渐变
+    const linearGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+    linearGradient.addColorStop(0, 'red');
+    linearGradient.addColorStop(0.5, 'yellow');
+    linearGradient.addColorStop(1, 'green');
+
+    // 绘制线性渐变文本
+    ctx.fillStyle = linearGradient;
+    ctx.fillText('Linear Gradient', 50, 100);
+
+    // 径向渐变
+    const radialGradient = ctx.createRadialGradient(
+      300, 250, 50, // 起始圆的圆心和半径
+      300, 250, 150 // 结束圆的圆心和半径
+    );
+    radialGradient.addColorStop(0, 'blue');
+    radialGradient.addColorStop(1, 'purple');
+
+    // 绘制径向渐变文本
+    ctx.fillStyle = radialGradient;
+    ctx.fillText('Radial Gradient', 50, 300);
+  </script>
+</body>
+</html>

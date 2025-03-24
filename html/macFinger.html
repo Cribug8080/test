@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAuthn Example</title>
+</head>
+<body>
+    <h1>WebAuthn Example</h1>
+    <button id="register">Register</button>
+    <button id="login">Login</button>
+
+    <script>
+        const registerButton = document.getElementById('register');
+        const loginButton = document.getElementById('login');
+
+        // 注册用户
+        registerButton.addEventListener('click', async () => {
+            try {
+                const publicKeyCredential = await navigator.credentials.create({
+                    publicKey: {
+                        challenge: new Uint8Array([/* 服务器生成的随机挑战 */]),
+                        rp: {
+                            name: "Example App",
+                            id: "localhost",
+                        },
+                        user: {
+                            id: new Uint8Array([/* 用户 ID */]),
+                            name: "user@localhost.com",
+                            displayName: "User Name",
+                        },
+                        pubKeyCredParams: [{ alg: -7, type: "public-key" }],
+                        authenticatorSelection: {
+                            userVerification: "required",
+                        },
+                    },
+                });
+
+                console.log('Registration successful:', publicKeyCredential);
+                // 将 publicKeyCredential 发送到服务器保存
+            } catch (error) {
+                console.error('Registration failed:', error);
+            }
+        });
+
+        // 登录用户
+        loginButton.addEventListener('click', async () => {
+            try {
+                const assertion = await navigator.credentials.get({
+                    publicKey: {
+                        challenge: new Uint8Array([/* 服务器生成的随机挑战 */]),
+                        allowCredentials: [{
+                            type: "public-key",
+                            id: new Uint8Array([/* 从服务器获取的凭证 ID */]),
+                        }],
+                        userVerification: "required",
+                    },
+                });
+
+                console.log('Login successful:', assertion);
+                // 将 assertion 发送到服务器验证
+            } catch (error) {
+                console.error('Login failed:', error);
+            }
+        });
+    </script>
+</body>
+</html>
